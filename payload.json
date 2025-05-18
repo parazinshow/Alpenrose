@@ -1,0 +1,171 @@
+{
+  "timestamp": "2024-03-28T15:11:01.050Z",
+  "eventCategory": "order_updated",
+  "eventType": "order_updated",
+  "guid": "534bf25a-b657-45aa-9a63-47f8f35400d6",
+  "details": {
+    "restaurantGuid": "0cd990c9-fd74-461d-8468-de2a0919ccbba",
+    "order": {
+      "guid": "f6d98b95-2816-4f54-b1ab-7a5d71e83769",
+      "entityType": "Order",
+      "server": {
+        "guid": "909523c3-5bf9-4bad-a3b9-68c4ce3c05e9"
+      },
+      "lastModifiedDevice": {
+        "id": "9b5185224a27ab72"
+      },
+      "source": "In Store",
+      "businessDate": 20240401,
+      "paidDate": null,
+      "restaurantService": null,
+      "table": 22,
+      "approvalStatus": "APPROVED",
+      "diningOption": {
+        "guid": "06f9f331-848a-41b2-896f-e73e32cb278e",
+        "entityType": "DiningOption"
+      },
+      "openedDate": "2024-04-01T15:09:30.223+0000",
+      "checks": [
+        {
+          "guid": "cd39b62e-363b-4029-98f1-f3dc91f00df4",
+          "entityType": "Check",
+          "displayNumber": "2",
+          "payments": [],
+          "appliedDiscounts": [],
+          "lastModifiedDevice": {
+            "id": "9b5185224a27ab72"
+          },
+          "voidDate": null,
+          "paidDate": null,
+          "paymentStatus": "CLOSED",
+          "amount": 25.0,
+          "tabName": null,
+          "taxExempt": false,
+          "openedDate": "2024-04-01T15:10:58.985+0000",
+          "totalAmount": 27.5,
+          "selections": [
+            {
+              "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "entityType": "Selection",
+              "itemName": "Cheese Fondue",
+              "quantity": 1,
+              "price": 25.0,
+              "taxAmount": 2.5
+            }
+          ],
+          "createdDate": "2024-04-01T15:10:59.798+0000",
+          "deleted": false,
+          "createdDevice": {
+            "id": "9b5185224a27ab72"
+          },
+          "closedDate": null,
+          "deletedDate": "1970-01-01T00:00:00.000+0000",
+          "modifiedDate": "2024-04-01T15:10:59.833+0000",
+          "taxAmount": 2.5,
+          "appliedServiceCharges": [],
+          "customer": null
+        },
+        {
+          "guid": "cd39b62e-363b-4029-98f1-f3dc91f00df4",
+          "entityType": "Check",
+          "displayNumber": "2",
+          "payments": [],
+          "appliedDiscounts": [],
+          "lastModifiedDevice": {
+            "id": "9b5185224a27ab72"
+          },
+          "voidDate": null,
+          "paidDate": null,
+          "paymentStatus": "OPEN",
+          "amount": 25.0,
+          "tabName": null,
+          "taxExempt": false,
+          "openedDate": "2024-04-01T15:10:58.985+0000",
+          "totalAmount": 27.5,
+          "selections": [
+            {
+              "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "entityType": "Selection",
+              "itemName": "Cheese Fondue",
+              "quantity": 1,
+              "price": 25.0,
+              "taxAmount": 2.5
+            }
+          ],
+          "createdDate": "2024-04-01T15:10:59.798+0000",
+          "deleted": false,
+          "createdDevice": {
+            "id": "9b5185224a27ab72"
+          },
+          "closedDate": null,
+          "deletedDate": "1970-01-01T00:00:00.000+0000",
+          "modifiedDate": "2024-04-01T15:10:59.833+0000",
+          "taxAmount": 2.5,
+          "appliedServiceCharges": [],
+          "customer": null
+        },
+        {
+          "guid": "cd39b62e-363b-4029-98f1-f3dc91f00df4",
+          "entityType": "Check",
+          "displayNumber": "2",
+          "payments": [],
+          "appliedDiscounts": [],
+          "lastModifiedDevice": {
+            "id": "9b5185224a27ab72"
+          },
+          "voidDate": null,
+          "paidDate": null,
+          "paymentStatus": "OPEN",
+          "amount": 25.0,
+          "tabName": null,
+          "taxExempt": false,
+          "openedDate": "2024-04-01T15:10:58.985+0000",
+          "totalAmount": 27.5,
+          "selections": [
+            {
+              "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "entityType": "Selection",
+              "itemName": "Schnitzel",
+              "quantity": 1,
+              "price": 25.0,
+              "taxAmount": 2.5
+            },
+            {
+              "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "entityType": "Selection",
+              "itemName": "Schnitzel",
+              "quantity": 1,
+              "price": 25.0,
+              "taxAmount": 2.5
+            },
+            {
+              "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+              "entityType": "Selection",
+              "itemName": "Apfelstrudel",
+              "quantity": 1,
+              "price": 25.0,
+              "taxAmount": 2.5
+            }
+          ],
+          "createdDate": "2024-04-01T15:10:59.798+0000",
+          "deleted": false,
+          "createdDevice": {
+            "id": "9b5185224a27ab72"
+          },
+          "closedDate": null,
+          "deletedDate": "1970-01-01T00:00:00.000+0000",
+          "modifiedDate": "2024-04-01T15:10:59.833+0000",
+          "taxAmount": 2.5,
+          "appliedServiceCharges": [],
+          "customer": null
+        }
+      ],
+      "createdDevice": {
+        "id": "9b5185224a27ab72"
+      },
+      "createdDate": "2024-04-01T15:10:59.817+0000",
+      "deletedDate": "1970-01-01T00:00:00.000+0000",
+      "modifiedDate": "2024-04-01T15:10:59.817+0000"
+    }
+  }
+}
