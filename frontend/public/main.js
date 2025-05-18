@@ -16,10 +16,10 @@ const vuetify = createVuetify({
         colors: {
           tableEmpty: '#929499',
           tableSeated: '#b06ec8',
-          tableAppetizer: '#c5c5ed',
+          tableAppetizers: '#c5c5ed',
           tableEntree: '#526ed7',
-          tableDessert: '#78bbd8',
-          bgColor: '#20242b',
+          tableDesserts: '#78bbd8',
+          bgColor: '#2e333e',
         },
       },
     },
