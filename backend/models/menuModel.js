@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 
 const MenuSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: {type: String, required: true},
   course: {
     type: {
       name: {
         type: String,
-        enum: ['appetizer', 'entree', 'dessert'],
+        enum: ['Appetizer', 'Entree', 'Dessert'],
         required: true,
-        default: 'appetizer',
+        default: 'Appetizer',
       },
       courseNumber: {
         type: Number,

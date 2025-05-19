@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 async function initializeTables() {
   try {
     const tables = [
-      ...Array.from({length: 10}, (_, i) => ({
+      ...Array.from({length: 12}, (_, i) => ({
         tableNumber: `${20 + i}`,
         section: 'Front Patio',
       })),
@@ -78,14 +78,14 @@ async function initializeTables() {
 async function initializeMenus() {
   try {
     const menus = [
-      {name: 'Cheese Fondue', course: {name: 'appetizer', courseNumber: 1}},
-      {name: 'Caesar Salad', course: {name: 'appetizer', courseNumber: 1}},
-      {name: 'Pretzel', course: {name: 'appetizer', courseNumber: 1}},
-      {name: 'Schnitzel', course: {name: 'entree', courseNumber: 2}},
-      {name: 'Bratwurst', course: {name: 'entree', courseNumber: 2}},
-      {name: 'Oktoberfest Haxn', course: {name: 'entree', courseNumber: 2}},
-      {name: 'Apfelstrudel', course: {name: 'dessert', courseNumber: 3}},
-      {name: 'Gelato', course: {name: 'dessert', courseNumber: 3}},
+      {name: 'Cheese Fondue', course: {name: 'Appetizer', courseNumber: 1}},
+      {name: 'Caesar Salad', course: {name: 'Appetizer', courseNumber: 1}},
+      {name: 'Pretzel', course: {name: 'Appetizer', courseNumber: 1}},
+      {name: 'Schnitzel', course: {name: 'Entree', courseNumber: 2}},
+      {name: 'Bratwurst', course: {name: 'Entree', courseNumber: 2}},
+      {name: 'Oktoberfest Haxn', course: {name: 'Entree', courseNumber: 2}},
+      {name: 'Apfelstrudel', course: {name: 'Dessert', courseNumber: 3}},
+      {name: 'Gelato', course: {name: 'Dessert', courseNumber: 3}},
     ]
     await Menu.deleteMany({})
     await Menu.insertMany(menus)
