@@ -20,6 +20,12 @@ const updateStatusTable = async (req, res, io) => {
     }
 
     const tableNumber = details.order.table //verificar se existe
+     
+    // Check is table is valid. if is not could be a take out
+    if (Object.keys(await Table.find({tableNumber: tableNumber})).length === 0){
+      return res.status(404).send('Table not found or is a takeout')
+    }
+
     const checks = details.order.checks || []
 
     if (checks) {
@@ -62,9 +68,6 @@ const updateStatusTable = async (req, res, io) => {
         },
         {new: true}
       )
-      if (!table) {
-        return res.status(404).send('Table not found')
-      }
       console.log(`Table ${tableNumber} updated to ${highestCourse.name}`)
 
       // Emitir evento para todos os clientes conectados
