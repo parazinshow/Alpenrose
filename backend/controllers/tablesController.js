@@ -6,14 +6,14 @@ const getAllTables = async (req, res) => {
     const tables = await Table.find()
     res.status(200).json(tables)
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching tables', error })
+    res.status(500).json({message: 'Error fetching tables', error})
   }
 }
 // Endpoint de webhook
-const updateStatusTable = async (req, res) => {
+const updateStatusTable = async (req, res, io) => {
   try {
     const payload = req.body
-    const { eventType, details } = payload
+    const {eventType, details} = payload
 
     if (!eventType || !details) {
       return res.status(400).send('Invalid payload')
@@ -40,7 +40,8 @@ const updateStatusTable = async (req, res) => {
             openItem.itemName.toLowerCase() === menuItem.name.toLowerCase()
         )
       )
-      let highestCourse = { courseNumber: 0, name: 'seated' }
+
+      let highestCourse = {courseNumber: 0, name: 'seated'}
       if (filteredItems.length) {
         highestCourse = filteredItems.reduce((max, item) => {
           if (!max || item.course.courseNumber > max.courseNumber) {
@@ -54,17 +55,21 @@ const updateStatusTable = async (req, res) => {
       }
 
       const table = await Table.findOneAndUpdate(
-        { tableNumber },
+        {tableNumber},
         {
           status: highestCourse.name,
           lastUpdated: Date.now(),
         },
-        { new: true }
+        {new: true}
       )
       if (!table) {
         return res.status(404).send('Table not found')
       }
       console.log(`Table ${tableNumber} updated to ${highestCourse.name}`)
+
+      // Emitir evento para todos os clientes conectados
+      const tables = await Table.find({}) // Busca todas as mesas
+      io.emit('tableUpdate', tables)
     }
 
     res.status(200).send('Webhook processed successfully')
