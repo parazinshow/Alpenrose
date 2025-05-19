@@ -20,16 +20,16 @@
       <v-col>
         <v-card-text>
           <v-tabs-window v-model="tab">
-            <v-tabs-window-item value="frontPatio"
-              ><FrontPatioComponent
-            /></v-tabs-window-item>
+            <v-tabs-window-item value="frontPatio">
+              <FrontPatioComponent v-if="tables" :tables="tables" />
+            </v-tabs-window-item>
 
             <v-tabs-window-item value="inside">
-              <InsideComponent />
+              <InsideComponent v-if="tables" :tables="tables" />
             </v-tabs-window-item>
 
             <v-tabs-window-item value="backPatio">
-              <BackPatioComponent />
+              <BackPatioComponent v-if="tables" :tables="tables"/>
             </v-tabs-window-item>
           </v-tabs-window>
         </v-card-text>
