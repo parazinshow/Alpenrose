@@ -42,9 +42,56 @@
   import FrontPatioComponent from '@/components/FrontPatioComponent.vue'
   import BackPatioComponent from '@/components/BackPatioComponent.vue'
   import InsideComponent from '@/components/InsideComponent.vue'
-  import {ref} from 'vue'
+  import {ref, onMounted, onUnmounted} from 'vue'
+  import {io} from 'socket.io-client'
 
+  // Configurações do Socket.IO
+  const socket = io('http://localhost:5000', {
+    transports: ['websocket', 'polling'], // Ensure fallback to polling if WebSocket fails
+  })
+
+  // Variable
+  const tables = ref([])
   const tab = ref(null)
+  const isConnected = ref(false)
+
+  // Conectar ao Socket.IO e escutar eventos
+  onMounted(() => {
+    socket.on('connect', () => {
+      console.log('Conectado ao servidor Socket.IO')
+      isConnected.value = true // Marca como conectado
+    })
+
+    socket.on('connect_error', (error) => {
+      console.error('Erro de conexão com Socket.IO:', error)
+      isConnected.value = false
+    })
+
+    socket.on('disconnect', () => {
+      console.log('Desconectado do servidor Socket.IO')
+      isConnected.value = false // Marca como desconectado
+    })
+
+    socket.on('initialState', (data) => {
+      console.log('Estado inicial recebido:', data)
+      tables.value = data
+    })
+
+    socket.on('tableUpdate', (data) => {
+      console.log('Atualização de mesas recebida:', data)
+      tables.value = data
+    })
+  })
+
+  // Desconectar o Socket.IO ao destruir o componente
+  onUnmounted(() => {
+    socket.off('connect')
+    socket.off('connect_error')
+    socket.off('disconnect')
+    socket.off('initialState')
+    socket.off('tableUpdate')
+    socket.disconnect()
+  })
 </script>
 
 <style scoped>
