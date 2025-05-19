@@ -14,31 +14,19 @@
             <!-- T1 and T2 -->
             <v-row>
               <!-- T1 -->
-              <v-col sm="6" :style="{minHeight: '15vh'}"
-                ><v-card
-                  v-bind="(t1 = tables[12])"
-                  :class="`bg-table${t1.status}`"
-                  :style="{
-                    height: '100%',
-                    width: '60%',
-                    margin: '0 auto',
-                  }"
-                  ><h2>{{ t1.tableNumber }}</h2>
-                </v-card></v-col
-              >
+              <v-col sm="6" :style="{minHeight: '15vh'}">
+                <TableComponent
+                  :table="tables[12]"
+                  :dimensions="{h: 100, w: 60}"
+                />
+              </v-col>
               <!-- T2 -->
-              <v-col sm="6" :style="{minHeight: '15vh'}"
-                ><v-card
-                  v-bind="(t2 = tables[13])"
-                  :class="`bg-table${t2.status}`"
-                  :style="{
-                    height: '80%',
-                    width: '30%',
-                    margin: '0 auto',
-                  }"
-                  ><h2>{{ t2.tableNumber }}</h2></v-card
-                ></v-col
-              >
+              <v-col sm="6" :style="{minHeight: '15vh'}">
+                <TableComponent
+                  :table="tables[13]"
+                  :dimensions="{h: 80, w: 30}"
+                />
+              </v-col>
             </v-row>
             <!-- Space between T1 and T14 -->
             <v-row>
@@ -48,76 +36,41 @@
             <v-row>
               <!-- T13 -->
               <v-col sm="4" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t13 = tables[23])"
-                  :class="`bg-table${t13.status}`"
-                  :style="{
-                    height: '100%',
-                    width: '55%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t13.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[23]"
+                  :dimensions="{h: 100, w: 55}"
+                />
               </v-col>
               <!-- T14 -->
               <v-col sm="8" :style="{minHeight: '20vh'}">
-                <v-card
-                  v-bind="(t14 = tables[24])"
-                  :class="`bg-table${t14.status}`"
-                  :style="{
-                    height: '80%',
-                    width: '85%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t14.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[24]"
+                  :dimensions="{h: 80, w: 85}"
+                />
               </v-col>
             </v-row>
             <!-- T12 and T11 and T150 -->
             <v-row>
               <!-- T150 -->
               <v-col sm="4" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t150 = tables[25])"
-                  :class="`bg-table${t150.status}`"
-                  :style="{
-                    height: '80%',
-                    width: '50%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t150.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[25]"
+                  :dimensions="{h: 80, w: 50}"
+                />
               </v-col>
               <!-- T12 -->
               <v-col sm="6" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t12 = tables[22])"
-                  :class="`bg-table${t12.status}`"
-                  :style="{
-                    height: '100%',
-                    width: '60%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t12.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[22]"
+                  :dimensions="{h: 100, w: 60}"
+                />
               </v-col>
               <!-- T11 -->
               <v-col sm="2" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t11 = tables[21])"
-                  :class="`bg-table${t11.status}`"
-                  :style="{
-                    height: '80%',
-                    width: '100%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t11.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[21]"
+                  :dimensions="{h: 80, w: 100}"
+                />
               </v-col>
             </v-row>
           </v-col>
@@ -128,113 +81,63 @@
             <v-row>
               <!-- T5 -->
               <v-col sm="6" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t5 = tables[15])"
-                  :class="`bg-table${t5.status}`"
-                  :style="{
-                    height: '90%',
-                    width: '60%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t5.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[15]"
+                  :dimensions="{h: 90, w: 60}"
+                />
               </v-col>
               <!-- T4 -->
               <v-col sm="6" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t4 = tables[14])"
-                  :class="`bg-table${t4.status}`"
-                  :style="{
-                    height: '90%',
-                    width: '60%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t4.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[14]"
+                  :dimensions="{h: 90, w: 60}"
+                />
               </v-col>
             </v-row>
             <!-- T6 -->
             <v-row>
               <v-col sm="6" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t6 = tables[16])"
-                  :class="`bg-table${t6.status}`"
-                  :style="{
-                    height: '90%',
-                    width: '60%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t6.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[16]"
+                  :dimensions="{h: 90, w: 60}"
+                />
               </v-col>
             </v-row>
             <!-- T7 -->
             <v-row>
               <v-col sm="6" :style="{minHeight: '15vh'}"></v-col>
               <v-col sm="6" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t7 = tables[17])"
-                  :class="`bg-table${t7.status}`"
-                  :style="{
-                    height: '70%',
-                    width: '30%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t7.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[17]"
+                  :dimensions="{h: 70, w: 30}"
+                />
               </v-col>
             </v-row>
             <!-- T8 -->
             <v-row>
+              <v-col sm="6" :style="{minHeight: '15vh'}"> </v-col>
               <v-col sm="6" :style="{minHeight: '15vh'}">
-              </v-col>
-              <v-col sm="6" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t8 = tables[18])"
-                  :class="`bg-table${t8.status}`"
-                  :style="{
-                    height: '90%',
-                    width: '70%',
-                    margin: '0 auto',
-                  }"
-                  >
-                  <h2>{{ t8.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[18]"
+                  :dimensions="{h: 90, w: 70}"
+                />
               </v-col>
             </v-row>
             <!-- T9 and T10 -->
             <v-row>
               <!-- T10 -->
               <v-col sm="6" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t10 = tables[20])"
-                  :class="`bg-table${t10.status}`"
-                  :style="{
-                    height: '90%',
-                    width: '60%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t10.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[20]"
+                  :dimensions="{h: 90, w: 60}"
+                />
               </v-col>
               <!-- T9 -->
               <v-col sm="6" :style="{minHeight: '15vh'}">
-                <v-card
-                  v-bind="(t9 = tables[19])"
-                  :class="`bg-table${t9.status}`"
-                  :style="{
-                    height: '70%',
-                    width: '30%',
-                    margin: '0 auto',
-                  }"
-                >
-                  <h2>{{ t9.tableNumber }}</h2>
-                </v-card>
+                <TableComponent
+                  :table="tables[19]"
+                  :dimensions="{h: 70, w: 30}"
+                />
               </v-col>
             </v-row>
           </v-col>
@@ -248,7 +151,7 @@
 </template>
 
 <script setup>
-  import {defineComponent, ref} from 'vue'
+  import TableComponent from '@/components/TableComponent.vue'
 
   const props = defineProps({
     tables: {
@@ -258,15 +161,3 @@
     },
   })
 </script>
-
-<style scoped>
-  .v-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-  }
-  .v-row {
-    padding: 0px;
-  }
-</style>

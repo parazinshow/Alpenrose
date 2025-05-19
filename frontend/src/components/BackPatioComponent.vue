@@ -12,110 +12,57 @@
         <v-row :style="{minHeight: '25vh'}">
           <!-- T62 -->
           <v-col sm="3">
-            <v-card
-              v-bind="(t62 = tables[28])"
-              :class="`bg-table${t62.status}`"
+            <TableComponent
+              :table="tables[28]"
+              :dimensions="{h: 80, w: 55}"
               class="round-table"
-              :style="{
-                height: '15vh',
-                width: '8vw',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t62.tableNumber }}</h2>
-            </v-card>
+            />
           </v-col>
           <!-- T63 -->
           <v-col sm="3">
-            <v-card
-              v-bind="(t63 = tables[29])"
-              :class="`bg-table${t63.status}`"
-              :style="{
-                height: '100%',
-                width: '40%',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t63.tableNumber }}</h2>
-            </v-card>
+            <TableComponent :table="tables[29]" :dimensions="{h: 100, w: 40}" />
           </v-col>
           <!-- T64 -->
           <v-col sm="3">
-            <v-card
-              v-bind="(t64 = tables[30])"
-              :class="`bg-table${t64.status}`"
-              :style="{
-                height: '65%',
-                width: '85%',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t64.tableNumber }}</h2>
-            </v-card>
+            <TableComponent :table="tables[30]" :dimensions="{h: 65, w: 85}" />
           </v-col>
           <!-- T65 -->
           <v-col sm="3" :style="{minHeight: '20vh'}">
-            <v-card
-              v-bind="(t65 = tables[31])"
-              :class="`bg-table${t65.status}`"
+            <TableComponent
+              :table="tables[31]"
+              :dimensions="{h: 100, w: 35}"
               :style="{
-                height: '100%',
-                width: '35%',
-                margin: '0 auto',
                 transform: 'rotate(-45deg)',
               }"
-            >
-              <h2>{{ t65.tableNumber }}</h2>
-            </v-card>
+            />
           </v-col>
         </v-row>
         <!-- T61, 69, 70 -->
         <v-row :style="{minHeight: '25vh'}">
           <!-- T61 -->
           <v-col sm="2">
-            <v-card
-              v-bind="(t61 = tables[27])"
-              :class="`bg-table${t61.status}`"
+            <TableComponent
+              :table="tables[27]"
+              :dimensions="{h: 80, w: 80}"
               class="round-table"
-              :style="{
-                height: '15vh',
-                width: '8vw',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t61.tableNumber }}</h2>
-            </v-card>
+            />
           </v-col>
           <v-col sm="1"></v-col>
           <!-- T69 -->
           <v-col sm="3">
-            <v-card
-              v-bind="(t69 = tables[35])"
-              :class="`bg-table${t69.status}`"
+            <TableComponent
+              :table="tables[35]"
+              :dimensions="{h: 80, w: 55}"
               class="round-table"
-              :style="{
-                height: '15vh',
-                width: '8vw',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t69.tableNumber }}</h2>
-            </v-card>
+            />
           </v-col>
           <!-- T70 -->
           <v-col sm="2">
-            <v-card
-              v-bind="(t70 = tables[36])"
-              :class="`bg-table${t70.status}`"
+            <TableComponent
+              :table="tables[36]"
+              :dimensions="{h: 80, w: 85}"
               class="round-table"
-              :style="{
-                height: '15vh',
-                width: '8vw',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t70.tableNumber }}</h2>
-            </v-card>
+            />
           </v-col>
           <v-col sm="4"></v-col>
         </v-row>
@@ -124,65 +71,25 @@
         <v-row :style="{minHeight: '25vh'}">
           <!-- T60 -->
           <v-col sm="4">
-            <v-card
-              v-bind="(t60 = tables[26])"
-              :class="`bg-table${t60.status}`"
-              class="bg-tableEmpty"
-              :style="{
-                height: '70%',
-                width: '75%',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t60.tableNumber }}</h2>
-            </v-card>
+            <TableComponent :table="tables[26]" :dimensions="{h: 70, w: 75}" />
           </v-col>
           <!-- Space for the door -->
           <v-col sm="1"></v-col>
           <!-- T68 -->
           <v-col sm="2">
-            <v-card
-              v-bind="(t68 = tables[34])"
-              :class="`bg-table${t68.status}`"
-              class="bg-tableEmpty"
-              :style="{
-                height: '100%',
-                width: '60%',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t68.tableNumber }}</h2>
-            </v-card>
+            <TableComponent :table="tables[34]" :dimensions="{h: 100, w: 60}" />
           </v-col>
           <!-- T67 -->
           <v-col sm="3">
-            <v-card
-              v-bind="(t67 = tables[33])"
-              :class="`bg-table${t67.status}`"
-              class="bg-tableEmpty"
-              :style="{
-                height: '60%',
-                width: '70%',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t67.tableNumber }}</h2>
-            </v-card>
+            <TableComponent :table="tables[33]" :dimensions="{h: 60, w: 70}" />
           </v-col>
           <!-- T66 -->
           <v-col sm="2">
-            <v-card
-              v-bind="(t66 = tables[32])"
-              :class="`bg-table${t66.status}`"
+            <TableComponent
+              :table="tables[32]"
+              :dimensions="{h: 60, w: 70}"
               class="round-table"
-              :style="{
-                height: '60%',
-                width: '70%',
-                margin: '0 auto',
-              }"
-            >
-              <h2>{{ t66.tableNumber }}</h2>
-            </v-card>
+            />
           </v-col>
         </v-row>
       </v-container>
@@ -194,7 +101,7 @@
 </template>
 
 <script setup>
-  import {defineComponent, ref} from 'vue'
+  import TableComponent from '@/components/TableComponent.vue'
 
   const props = defineProps({
     tables: {
@@ -206,12 +113,6 @@
 </script>
 
 <style scoped>
-  .v-card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-  }
   .round-table {
     border-radius: 100%;
   }
