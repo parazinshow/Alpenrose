@@ -19,7 +19,7 @@ const updateStatusTable = async (req, res, io) => {
       return res.status(400).send('Invalid payload')
     }
 
-    const tableNumber = details.order.table //verificar se existe
+    const tableNumber = details.order.table //Get table number from payload
 
     // Check is table is valid. if is not could be a take out
     if (
@@ -34,16 +34,30 @@ const updateStatusTable = async (req, res, io) => {
       const openChecks = checks.filter(
         (check) => check.paymentStatus === 'OPEN'
       )
+
       if (!openChecks || openChecks.length === 0) {
-        return res.status(400).send('No open checks found')
+        if (details.order.paidDate) {
+          await setTableStatus(tableNumber, 'Empty', io)
+          return res
+            .status(200)
+            .send(`All checks closed on table ${tableNumber}. Updated to empty`)
+        }
+        return res.status(200).send('No open checks found')
       }
-      const openItems = openChecks.flatMap((check) => check.selections)
-      if (!openItems || openItems.length === 0) {
-        return res.status(400).send('No items found')
+
+      let openCheckItems = openChecks.flatMap((check) => check.selections) // Flatten the array of selections of all open checks
+
+      openCheckItems = openCheckItems.filter(
+        (item) => item.fulfillmentStatus === 'SENT'
+      ) // Filter only items sent to kitchen
+
+      if (!openCheckItems || openCheckItems.length === 0) {
+        await setTableStatus(tableNumber, 'Seated', io)
+        return res.status(200).send('No fired items found')
       }
       const menuItems = await Menu.find({})
       const filteredItems = menuItems.filter((menuItem) =>
-        openItems.some(
+        openCheckItems.some(
           (openItem) =>
             openItem.itemName.toLowerCase() === menuItem.name.toLowerCase()
         )
@@ -61,20 +75,7 @@ const updateStatusTable = async (req, res, io) => {
           return max
         }, null)
       }
-
-      const table = await Table.findOneAndUpdate(
-        {tableNumber},
-        {
-          status: highestCourse.name,
-          lastUpdated: Date.now(),
-        },
-        {new: true}
-      )
-      console.log(`Table ${tableNumber} updated to ${highestCourse.name}`)
-
-      // Emitir evento para todos os clientes conectados
-      const tables = await Table.find({}) // Busca todas as mesas
-      io.emit('tableUpdate', tables)
+      await setTableStatus(tableNumber, highestCourse.name, io)
     }
 
     res.status(200).send('Webhook processed successfully')
@@ -82,6 +83,22 @@ const updateStatusTable = async (req, res, io) => {
     console.error('Fail to proccess webhook:', err)
     res.status(500).send('Internal server error')
   }
+}
+
+async function setTableStatus(tableNumber, status, io) {
+  await Table.findOneAndUpdate(
+    {tableNumber},
+    {
+      status: status,
+      lastUpdated: Date.now(),
+    },
+    {new: true}
+  )
+  console.log(`Table ${tableNumber} updated to ${status}`)
+
+  // Emitir evento para todos os clientes conectados
+  const tables = await Table.find({}) // Busca todas as mesas
+  io.emit('tableUpdate', tables)
 }
 
 module.exports = {

@@ -1,0 +1,10 @@
+[
+  {"name": "Cheese Fondue", "course": {"name": "Appetizer", "courseNumber": 1}},
+  {"name": "Caesar Salad", "course": {"name": "Appetizer", "courseNumber": 1}},
+  {"name": "Pretzel", "course": {"name": "Appetizer", "courseNumber": 1}},
+  {"name": "Schnitzel", "course": {"name": "Entree", "courseNumber": 2}},
+  {"name": "Bratwurst", "course": {"name": "Entree", "courseNumber": 2}},
+  {"name": "Oktoberfest Haxn", "course": {"name": "Entree", "courseNumber": 2}},
+  {"name": "Apfelstrudel", "course": {"name": "Dessert", "courseNumber": 3}},
+  {"name": "Gelato", "course": {"name": "Dessert", "courseNumber": 3}}
+]

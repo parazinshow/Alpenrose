@@ -1,8 +1,10 @@
 // Express Settings
 const express = require('express')
-const http = require('http') // Importe o módulo http
+const http = require('http')
 const {Server} = require('socket.io')
 const cors = require('cors')
+const {initializeTables, initializeMenus} = require('./db/init')
+
 const app = express()
 
 // Crie o servidor HTTP
@@ -16,6 +18,7 @@ const io = new Server(server, {
   },
 })
 
+// Websocket
 io.on('connection', (socket) => {
   console.log('Novo cliente conectado:', socket.id)
   Table.find({})
@@ -30,70 +33,24 @@ io.on('connection', (socket) => {
   })
 })
 
+// Middleware
 app.use(express.json())
-app.use(cors()) // Aplica o middleware CORS para o Express
+app.use(cors()) // Enable CORS for all routes
 
 // MongoDB Connection
 const connectDB = require('./db/connect')
 
 // Database Models
 const Table = require('./models/tableModel')
-const Menu = require('./models/menuModel')
 
 //router
 const tablesRouter = require('./routes/tablesRouter')(io)
 
 //Declaring routes
 app.use('/api/tables', tablesRouter)
-
-// Add a root route
 app.get('/', (req, res) => {
   res.send('Welcome to the server!')
 })
-
-// Initialize Tables and Menus
-async function initializeTables() {
-  try {
-    const tables = [
-      ...Array.from({length: 12}, (_, i) => ({
-        tableNumber: `${20 + i}`,
-        section: 'Front Patio',
-      })),
-      ...[1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 150].map((num) => ({
-        tableNumber: `${num}`,
-        section: 'Dining Room',
-      })),
-      ...Array.from({length: 11}, (_, i) => ({
-        tableNumber: `${60 + i}`,
-        section: 'Back Patio',
-      })),
-    ]
-    await Table.deleteMany({})
-    await Table.insertMany(tables)
-    console.log('Tables initialized successfully')
-  } catch (err) {
-    console.error('Fail to initialize tables:', err)
-  }
-}
-async function initializeMenus() {
-  try {
-    const menus = [
-      {name: 'Cheese Fondue', course: {name: 'Appetizer', courseNumber: 1}},
-      {name: 'Caesar Salad', course: {name: 'Appetizer', courseNumber: 1}},
-      {name: 'Pretzel', course: {name: 'Appetizer', courseNumber: 1}},
-      {name: 'Schnitzel', course: {name: 'Entree', courseNumber: 2}},
-      {name: 'Bratwurst', course: {name: 'Entree', courseNumber: 2}},
-      {name: 'Oktoberfest Haxn', course: {name: 'Entree', courseNumber: 2}},
-      {name: 'Apfelstrudel', course: {name: 'Dessert', courseNumber: 3}},
-      {name: 'Gelato', course: {name: 'Dessert', courseNumber: 3}},
-    ]
-    await Menu.deleteMany({})
-    await Menu.insertMany(menus)
-    console.log('Menu initialized successfully')
-  } catch (err) {
-    console.error('Fail to initialize menu:', err)
-  }
-}
 
 const port = process.env.PORT || 5000
 const start = async () => {
